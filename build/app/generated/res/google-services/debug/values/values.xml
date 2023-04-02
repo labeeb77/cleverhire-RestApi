@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">933534506363-cva7mq98orc2uir519gdi0uc0qfbfpuu.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">933534506363</string>
+    <string name="google_api_key" translatable="false">AIzaSyCJ8oz9aJiyCkiFVsmrU7Ukggje665A9I4</string>
+    <string name="google_app_id" translatable="false">1:933534506363:android:78c9614810618f735fb1de</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCJ8oz9aJiyCkiFVsmrU7Ukggje665A9I4</string>
+    <string name="google_storage_bucket" translatable="false">cleverhire-8e0a4.appspot.com</string>
+    <string name="project_id" translatable="false">cleverhire-8e0a4</string>
+</resources>
