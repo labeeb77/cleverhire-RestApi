@@ -12,7 +12,7 @@ class RecruiterBottomNavigation extends StatelessWidget {
   RecruiterBottomNavigation({super.key});
 
   final screens = [
-    const RecruiterHomeScreen(),
+    RecruiterHomeScreen(),
     const RecruiterApplicationScreen(),
     const RecruiterChatScreen(),
     const RecruiterProfileEditingScreen(),

@@ -23,7 +23,7 @@ class ApplyingForVacancy {
         options: Options(headers: {"authorization": "Bearer $newToken"}),
       );
       if (response.statusCode == 200 || response.statusCode == 201) {
-        log(response.data.toString());
+        log(response.data);
         if (response.data["status"] == 422) {
           log(response.data["message"]);
         }

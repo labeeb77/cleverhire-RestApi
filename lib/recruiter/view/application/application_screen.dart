@@ -1,7 +1,9 @@
 import 'package:cleverhire/core/constraints/constraints.dart';
+import 'package:cleverhire/recruiter/controller/api_services/delete_vacancy_services.dart';
 import 'package:cleverhire/recruiter/controller/provider/get_created_vacancy_provider.dart';
 import 'package:cleverhire/recruiter/view/application/application_details_and_update.dart';
 import 'package:cleverhire/recruiter/view/application/create_new_vacancy.dart';
+import 'package:cleverhire/recruiter/view/home/recruiter_bottom_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -79,7 +81,50 @@ class RecruiterApplicationScreen extends StatelessWidget {
                                                 ),
                                               ),
                                               IconButton(
-                                                  onPressed: () {},
+                                                  onPressed: () {
+                                                    showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (ctx) =>
+                                                                AlertDialog(
+                                                                  content:
+                                                                      const Text(
+                                                                          "Are you sure to delete"),
+                                                                  title:
+                                                                      const Text(
+                                                                    "Confirm..!",
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .red),
+                                                                  ),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                        onPressed:
+                                                                            () {
+                                                                          DeleteJobVacancyApiServices().deleteJobVacancy(value
+                                                                              .createdVacancies![index]
+                                                                              .id);
+                                                                          Navigator.of(context).pushAndRemoveUntil(
+                                                                              MaterialPageRoute(builder: (context) => RecruiterBottomNavigation()),
+                                                                              (route) => false);
+                                                                        },
+                                                                        child:
+                                                                            const Text(
+                                                                          "Yes",
+                                                                          style:
+                                                                              TextStyle(color: Colors.red),
+                                                                        )),
+                                                                    TextButton(
+                                                                        onPressed:
+                                                                            () {
+                                                                          Navigator.pop(
+                                                                              context);
+                                                                        },
+                                                                        child: const Text(
+                                                                            "No"))
+                                                                  ],
+                                                                ));
+                                                  },
                                                   icon: const Icon(Icons.clear))
                                             ],
                                           ),
