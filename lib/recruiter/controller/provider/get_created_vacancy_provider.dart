@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 class GetCreatedVacancyProvider with ChangeNotifier {
   List<CreateVacancyResModel>? createdVacancies;
   bool isLoading = false;
+  int? indexId = 0;
   Future<void> fetchCreatedVacancies() async {
     isLoading = true;
     notifyListeners();

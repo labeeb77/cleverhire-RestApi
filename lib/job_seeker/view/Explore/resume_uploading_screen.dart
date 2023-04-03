@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cleverhire/core/color/color.dart';
 import 'package:cleverhire/core/constraints/constraints.dart';
 import 'package:cleverhire/job_seeker/controller/firebase/storage_services.dart';
@@ -182,6 +184,7 @@ class ResumeUpload extends StatelessWidget {
                                   listen: false);
                           provider.applyingForVacancy(
                               context, value2.createdVacancies![index4].id);
+                          log("Checking the id is changing or not ${value2.createdVacancies![index4].id}");
                           provider.isLoading
                               ? const Center(
                                   child: CircularProgressIndicator(),

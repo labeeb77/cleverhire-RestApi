@@ -3,6 +3,7 @@ import 'package:cleverhire/job_seeker/controller/provider/applying_for_vacancy_p
 import 'package:cleverhire/job_seeker/controller/provider/seeker_login_provider.dart';
 import 'package:cleverhire/recruiter/controller/provider/company_login_provider.dart';
 import 'package:cleverhire/recruiter/controller/provider/create_vacancy_provider.dart';
+import 'package:cleverhire/recruiter/controller/provider/get_applied_people_provider.dart';
 import 'package:cleverhire/recruiter/controller/provider/get_created_vacancy_provider.dart';
 import 'package:cleverhire/theme/theme.dart';
 import 'package:cleverhire/job_seeker/controller/provider/local_functions_provider.dart';
@@ -40,7 +41,8 @@ class MyApp extends StatelessWidget {
         ListenableProvider(create: ((context) => CreateVacancyProvider())),
         ListenableProvider(create: ((context) => SeekerLoginProvider())),
         ListenableProvider(create: ((context) => GetCreatedVacancyProvider())),
-        ListenableProvider(create: ((context) => ApplyingForVacancyProvider()))
+        ListenableProvider(create: ((context) => ApplyingForVacancyProvider())),
+        ListenableProvider(create: ((context) => GetAppliedPeoplesProvider()))
       ],
       child: OverlaySupport.global(
         child: MaterialApp(

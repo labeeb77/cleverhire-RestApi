@@ -230,15 +230,20 @@ class SignUpScreen extends StatelessWidget {
                                               onPressed: () async {
                                                 if (formKey.currentState!
                                                     .validate()) {
+                                                  toast(
+                                                      "     Loading\n\nSending OTP...");
+
                                                   String result = await provider
                                                       .checkUserSignUp(context);
+                                                  // provider.disposeTextField();
                                                   log(result);
                                                   if (result == 'success') {
                                                     Navigator.of(context).push(
                                                         MaterialPageRoute(
                                                             builder: (ctc) {
                                                       return OtpVerificationScreen();
-                                                    }));
+                                                    })).then((value) => provider
+                                                        .disposeTextField());
                                                   } else {
                                                     showSimpleNotification(
                                                         Text(result));

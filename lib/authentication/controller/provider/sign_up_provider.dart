@@ -21,4 +21,11 @@ class SignUpProvider with ChangeNotifier {
         await SignUpServicesApi().signUpVerification(signUpUser, context);
     return result;
   }
+
+  void disposeTextField() {
+    emailController.clear();
+    passwordController.clear();
+    confirmPassWordController.clear();
+    userNameController.clear();
+  }
 }

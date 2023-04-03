@@ -359,6 +359,7 @@ class OtpVerificationScreen extends StatelessWidget {
                             if (otpFormKey.currentState!.validate()) {
                               String result = await provider
                                   .otpVerificationChecking(context);
+
                               if (result == 'success') {
                                 Navigator.of(context).pushAndRemoveUntil(
                                     MaterialPageRoute(

@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cleverhire/core/constraints/constraints.dart';
+import 'package:cleverhire/recruiter/controller/provider/get_applied_people_provider.dart';
 import 'package:cleverhire/recruiter/controller/provider/get_created_vacancy_provider.dart';
 import 'package:cleverhire/recruiter/view/home/widget/job_vacancies_card.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,9 +19,11 @@ class RecruiterHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider =
         Provider.of<GetCreatedVacancyProvider>(context, listen: false);
-
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      provider.fetchCreatedVacancies();
+    final provider2 =
+        Provider.of<GetAppliedPeoplesProvider>(context, listen: false);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await provider.fetchCreatedVacancies();
+      provider2.fetchingAppliedPeople(provider.createdVacancies![0].id);
     });
 
     return Scaffold(
@@ -27,8 +32,8 @@ class RecruiterHomeScreen extends StatelessWidget {
         centerTitle: true,
         title: const Text("Home"),
       ),
-      body: Consumer<GetCreatedVacancyProvider>(
-        builder: (context, value, child) => Padding(
+      body: Consumer2<GetCreatedVacancyProvider, GetAppliedPeoplesProvider>(
+        builder: (context, value, value2, child) => Padding(
           padding: const EdgeInsets.all(10.0),
           child: ListView(
             children: [
@@ -123,6 +128,13 @@ class RecruiterHomeScreen extends StatelessWidget {
                             aspectRatio: 2.7,
                             viewportFraction: 0.83,
                             enlargeFactor: 0.25,
+                            onPageChanged: (index, reason) {
+                              value.indexId = index;
+                              value.notifyListeners();
+                              value2.fetchingAppliedPeople(
+                                  value.createdVacancies![value.indexId!].id);
+                              log("::::::::::${value.indexId.toString()}");
+                            },
                           ),
                         ),
               kHeight(20),
@@ -135,12 +147,20 @@ class RecruiterHomeScreen extends StatelessWidget {
                 ],
               ),
               kHeight(10),
-              ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: 4,
-                shrinkWrap: true,
-                itemBuilder: (context, index) => const AppliedPeopleCard(),
-              ),
+              value2.isLoading
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : value.createdVacancies == null
+                      ? SizedBox()
+                      : ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: value2.appliedPeoples!.length,
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) => AppliedPeopleCard(
+                            index: index,
+                          ),
+                        ),
             ],
           ),
         ),
