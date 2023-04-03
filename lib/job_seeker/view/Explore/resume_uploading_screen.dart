@@ -189,7 +189,7 @@ class ResumeUpload extends StatelessWidget {
                               : Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const BottomNavigation()));
+                                          BottomNavigation()));
                           toast("Success");
                         } else {
                           showSimpleNotification(

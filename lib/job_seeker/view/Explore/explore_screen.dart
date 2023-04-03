@@ -1,5 +1,6 @@
 import 'package:cleverhire/core/color/color.dart';
 import 'package:cleverhire/core/constraints/constraints.dart';
+import 'package:cleverhire/job_seeker/controller/apiServices/search_vacancy_services.dart';
 import 'package:cleverhire/recruiter/controller/provider/get_created_vacancy_provider.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -9,7 +10,9 @@ import 'package:provider/provider.dart';
 import 'job_details_screen.dart';
 
 class ExploreScreen extends StatelessWidget {
-  const ExploreScreen({super.key});
+  ExploreScreen({super.key});
+
+  TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,13 @@ class ExploreScreen extends StatelessWidget {
           children: [
             Column(
               children: [
-                const CupertinoSearchTextField(),
+                CupertinoSearchTextField(
+                  controller: searchController,
+                  onSubmitted: (value) {
+                    SearchJobVacancy()
+                        .searchedVacancy(searchController.text.trim());
+                  },
+                ),
                 kHeight(20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

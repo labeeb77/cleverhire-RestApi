@@ -49,25 +49,64 @@ class RecruiterHomeScreen extends StatelessWidget {
                       baseColor: const Color.fromARGB(255, 51, 51, 51),
                       highlightColor: const Color.fromARGB(255, 125, 125, 125),
                       child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 30),
-                          child: Row(
-                            children: [
-                              Card(
-                                child: SizedBox(
-                                  width: 80.0,
-                                  height: 60.0,
-                                  child: Shimmer.fromColors(
-                                    baseColor: Colors.black12,
-                                    highlightColor: Colors.grey,
-                                    child: const SizedBox(
-                                      height: 100,
-                                      width: 39,
-                                    ),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 10),
+                        child: Row(
+                          children: [
+                            Card(
+                              child: SizedBox(
+                                width: 100.0,
+                                height: 90.0,
+                                child: Shimmer.fromColors(
+                                  baseColor: Colors.black12,
+                                  highlightColor: Colors.grey,
+                                  child: const SizedBox(
+                                    height: 100,
+                                    width: 39,
                                   ),
                                 ),
                               ),
-                            ],
-                          )))
+                            ),
+                            Column(
+                              children: [
+                                Card(
+                                  child: SizedBox(
+                                    width: 200.0,
+                                    height: 20.0,
+                                    child: Shimmer.fromColors(
+                                      baseColor: Colors.black12,
+                                      highlightColor: Colors.grey,
+                                      child: const SizedBox(
+                                        height: 100,
+                                        width: 39,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Card(
+                                      child: SizedBox(
+                                        width: 150.0,
+                                        height: 20.0,
+                                        child: Shimmer.fromColors(
+                                          baseColor: Colors.black12,
+                                          highlightColor: Colors.grey,
+                                          child: const SizedBox(
+                                            height: 100,
+                                            width: 39,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    )
                   : value.createdVacancies == null
                       ? const SizedBox()
                       : CarouselSlider.builder(

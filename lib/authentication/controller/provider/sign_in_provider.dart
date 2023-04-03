@@ -39,8 +39,8 @@ class SignInProvider with ChangeNotifier {
               builder: (context) => RecruiterBottomNavigation()));
         } else if (value.user.role == "seeker") {
           // ignore: use_build_context_synchronously
-          Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => const BottomNavigation()));
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => BottomNavigation()));
         }
 
         disposeTexField();

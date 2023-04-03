@@ -28,8 +28,8 @@ class SplashScreen extends StatelessWidget {
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: ((ctx) => RecruiterBottomNavigation())));
       } else if (role == '"seeker"') {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: ((ctx) => const BottomNavigation())));
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: ((ctx) => BottomNavigation())));
       }
     });
     return const Scaffold(

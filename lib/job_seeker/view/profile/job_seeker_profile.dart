@@ -188,7 +188,7 @@ class JobSeekerProfile extends StatelessWidget {
                       if (validateKey.currentState!.validate()) {
                         provider.seekerLogin(context);
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const BottomNavigation()));
+                            builder: (context) => BottomNavigation()));
                       }
                     },
                     child: const Text(

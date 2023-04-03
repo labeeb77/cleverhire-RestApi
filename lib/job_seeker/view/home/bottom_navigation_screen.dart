@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class BottomNavigation extends StatelessWidget {
-  const BottomNavigation({super.key});
-  final screens = const [
+  BottomNavigation({super.key});
+  final screens = [
     HomeScreen(),
     ExploreScreen(),
     AppliedJobs(),

@@ -28,7 +28,7 @@ class RecruiterApplicationScreen extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: Consumer<GetCreatedVacancyProvider>(
             builder: (context, value, child) {
-          // final List<CreateVacancyResModel> listReversed = value.createdVacancies!.reversed;
+          final reversedCreatedVacanciesList = value.createdVacancies!.reversed;
           return value.isLoading
               ? const Center(
                   child: CircularProgressIndicator(),
@@ -36,7 +36,6 @@ class RecruiterApplicationScreen extends StatelessWidget {
               : value.createdVacancies == null
                   ? const SizedBox()
                   : ListView.separated(
-                      reverse: true,
                       itemBuilder: (context, index) => SizedBox(
                             height: 130,
                             child: GestureDetector(
