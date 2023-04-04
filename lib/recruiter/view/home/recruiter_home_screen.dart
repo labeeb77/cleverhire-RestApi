@@ -148,11 +148,11 @@ class RecruiterHomeScreen extends StatelessWidget {
               ),
               kHeight(10),
               value2.isLoading
-                  ? Center(
+                  ? const Center(
                       child: CircularProgressIndicator(),
                     )
                   : value.createdVacancies == null
-                      ? SizedBox()
+                      ? const SizedBox()
                       : ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: value2.appliedPeoples!.length,

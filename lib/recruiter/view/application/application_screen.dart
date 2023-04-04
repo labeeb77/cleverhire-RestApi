@@ -99,13 +99,17 @@ class RecruiterApplicationScreen extends StatelessWidget {
                                                                   actions: [
                                                                     TextButton(
                                                                         onPressed:
-                                                                            () {
-                                                                          DeleteJobVacancyApiServices().deleteJobVacancy(value
+                                                                            () async {
+                                                                          await DeleteJobVacancyApiServices().deleteJobVacancy(value
                                                                               .createdVacancies![index]
                                                                               .id);
-                                                                          Navigator.of(context).pushAndRemoveUntil(
-                                                                              MaterialPageRoute(builder: (context) => RecruiterBottomNavigation()),
-                                                                              (route) => false);
+                                                                          value
+                                                                              .fetchCreatedVacancies();
+
+                                                                          Navigator.of(context)
+                                                                              .pushReplacement(
+                                                                            MaterialPageRoute(builder: (context) => RecruiterBottomNavigation()),
+                                                                          );
                                                                         },
                                                                         child:
                                                                             const Text(

@@ -15,7 +15,7 @@ class AppliedPeopleCard extends StatelessWidget {
         builder: (context, value, value2, child) => Padding(
           padding: const EdgeInsets.all(10.0),
           child: value.appliedPeoples == null
-              ? SizedBox()
+              ? const SizedBox()
               : Column(
                   children: [
                     ListTile(
@@ -48,8 +48,9 @@ class AppliedPeopleCard extends StatelessWidget {
                         ElevatedButton(
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) =>
-                                      const JobSeekerDetails()));
+                                  builder: (context) => JobSeekerDetails(
+                                        index: index,
+                                      )));
                             },
                             child: const Text("See Details"))
                       ],

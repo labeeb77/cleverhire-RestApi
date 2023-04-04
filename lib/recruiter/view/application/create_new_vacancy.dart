@@ -27,8 +27,8 @@ class CreateNewVacancyScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-          child: Consumer<CreateVacancyProvider>(
-            builder: (context, value, child) => Form(
+          child: Consumer2<CreateVacancyProvider, GetCreatedVacancyProvider>(
+            builder: (context, value, value2, child) => Form(
               key: formkey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -189,11 +189,13 @@ class CreateNewVacancyScreen extends StatelessWidget {
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: kMainColor),
-                          onPressed: () {
+                          onPressed: () async {
                             if (formkey.currentState!.validate()) {
-                              value.createVacancy();
-                              value.disposeTextField();
+                              await value.createVacancy();
 
+                              value.notifyListeners();
+                              value.disposeTextField();
+                              await value2.fetchCreatedVacancies();
                               Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
                                       builder: (context) =>
